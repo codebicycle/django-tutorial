@@ -16,11 +16,12 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 
-from inventory import views
+from books import views
 
 urlpatterns = [
-    url(r'^$', views.index, name='inventory-index'),
-    url(r'^item/(?P<id>\d+)/', views.item_detail, name='item_detail'),
+    url(r'^$', views.list_books, name='books'),
+    url(r'^books/', include('books.urls')),
     url(r'^polls/', include('polls.urls')),
+    url(r'^inventory/', include('inventory.urls')),
     url(r'^admin/', admin.site.urls),
 ]

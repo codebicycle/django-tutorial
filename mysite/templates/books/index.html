@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  {% if request.user.is_authenticated %}
+    <p>Hello {{ request.user.username | title }}, you last logged in at
+    {{ request.user.last_login }}</p>
+  {% else %}
+    <p>Hello guest!</p>
+  {% endif %}
+
+{% endblock %}
