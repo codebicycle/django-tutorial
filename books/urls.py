@@ -8,4 +8,6 @@ urlpatterns = [
     url(r'^authors/$', views.AuthorList.as_view(), name='authors'),
     url(r'^book/(?P<pk>[-\w]+)/$', views.BookDetail.as_view(), name='book-detail'),
     url(r'^author/(?P<pk>[-\w]+)/$', views.AuthorDetail.as_view(), name='author-detail'),
+    url(r'^review/$', views.review_books, name='review-books'),
+    url(r'^review/(?P<pk>[-\w]+)/$', views.review_book, name='review-book'),
 ]
