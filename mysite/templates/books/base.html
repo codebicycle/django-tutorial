@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block logo %}
+<img src="{% static 'img/logo.png' %}" alt="logo" class="logo" />
+{% endblock logo %}
+
+{% block nav %}
+<nav>
+  <a href="{% url 'books' %}">Books</a>
+  <a href="{% url 'authors' %}">Authors</a>
+</nav>
+{% endblock nav %}
