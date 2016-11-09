@@ -9,9 +9,8 @@ def list_books(request):
     """List the books that have reviews
 
     """
-    books = Book.objects \
-        .exclude(date_reviewed__isnull=True) \
-        .prefetch_related('authors')
+    books = Book.objects.exclude(date_reviewed__isnull=True).prefetch_related(
+        'authors')
 
     context = {
         'books': books
@@ -26,7 +25,8 @@ class ReviewList(View):
     """
 
     def get(self, request):
-        books = Book.objects.filter(date_reviewed__isnull=True).prefetch_related('authors')
+        books = Book.objects.filter(
+            date_reviewed__isnull=True).prefetch_related('authors')
         context = {
             'books': books,
             'form': BookForm,
@@ -35,7 +35,8 @@ class ReviewList(View):
 
     def post(self, request):
         form = BookForm(request.POST)
-        books = Book.objects.filter(date_reviewed__isnull=True).prefetch_related('authors')
+        books = Book.objects.filter(
+            date_reviewed__isnull=True).prefetch_related('authors')
 
         if form.is_valid():
             form.save()
@@ -62,7 +63,6 @@ def review_book(request, pk):
             book.save()
 
             return redirect('review-books')
-
     else:
         form = ReviewForm
 
