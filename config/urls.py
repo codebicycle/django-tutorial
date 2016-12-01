@@ -17,10 +17,10 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from django.conf import settings
 
-import books.views
+import blog.views
 
 urlpatterns = [
-    url(r'^$', books.views.list_books, name='home'),
+    url(r'^$', blog.views.HomeView.as_view(), name='home'),
     url(r'^books/', include('books.urls')),
     url(r'^polls/', include('polls.urls')),
     url(r'^inventory/', include('inventory.urls')),

@@ -5,6 +5,7 @@ from django.urls import reverse
 from django.utils.decorators import method_decorator
 from django.utils.text import slugify
 from django.views.generic import CreateView
+from django.views.generic import TemplateView
 
 from blog.forms import BlogForm
 from blog.models import Blog
@@ -30,3 +31,15 @@ class NewBlogView(CreateView):
                                          'per account')
         else:
             return super(NewBlogView, self).dispatch(request, *args, **kwargs)
+
+
+class HomeView(TemplateView):
+    template_name = 'blog/home.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(HomeView, self).get_context_data(**kwargs)
+        if self.request.user.is_authenticated():
+            context['has_blog'] = Blog.objects.filter(
+                owner=self.request.user).exists()
+
+        return context
