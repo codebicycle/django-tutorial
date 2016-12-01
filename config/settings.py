@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'polls.apps.PollsConfig',
     'inventory',
     'books',
+    'accounts',
+    'blog',
 ]
 
 MIDDLEWARE = [
@@ -50,6 +52,7 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
@@ -130,3 +133,6 @@ STATICFILES_DIRS = (
 )
 
 INTERNAL_IPS = ['127.0.0.1',]
+
+LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = '/login/'

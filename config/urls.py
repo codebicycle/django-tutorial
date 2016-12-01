@@ -20,11 +20,12 @@ from django.conf import settings
 import books.views
 
 urlpatterns = [
-    url(r'^$', books.views.list_books, name='books'),
+    url(r'^$', books.views.list_books, name='home'),
     url(r'^books/', include('books.urls')),
     url(r'^polls/', include('polls.urls')),
     url(r'^inventory/', include('inventory.urls')),
     url(r'^admin/', admin.site.urls),
+    url(r'^', include('accounts.urls')),
 ]
 
 if settings.DEBUG:

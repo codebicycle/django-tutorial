@@ -14,7 +14,16 @@
   <div class="container">
     <header>
       {% block logo %}{% endblock logo %}
+
       <div class="welcome">
+        <ul>
+          {% if request.user.is_authenticated %}
+          <li><a href="{% url 'logout' %}">Logout</a></li>
+          {% else %}
+          <li><a href="{% url 'login' %}">Login</a></li>
+          <li><a href="{% url 'user_registration' %}">Register Account</a></li>
+          {% endif %}
+        </ul>
         {% if request.user.is_authenticated %}
           <p>Hello {{ request.user.username | title }}, you last logged in at
           {{ request.user.last_login }}</p>
